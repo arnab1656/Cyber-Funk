@@ -1,5 +1,5 @@
 "use client"
- 
+
 import LocomotiveScroll from "locomotive-scroll";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
@@ -7,7 +7,7 @@ import ScrollTrigger from "gsap/ScrollTrigger";
 import "./scrollAnimation.css"
 
 // Register GSAP plugin safely
-if (typeof window !== "undefined" && !(gsap as any).ScrollTrigger) {
+if (typeof window !== "undefined" && !(gsap as typeof gsap & { ScrollTrigger?: unknown }).ScrollTrigger) {
   gsap.registerPlugin(ScrollTrigger);
 }
 
@@ -25,6 +25,7 @@ const ScrollAnimation: React.FC = () => {
 
   //_This usEffect for the Scroll and pin mechanism...
   useEffect(() => {
+
     if (!mainRef.current) return;
     const locoScroll = new LocomotiveScroll({
       el: mainRef.current,
@@ -37,13 +38,22 @@ const ScrollAnimation: React.FC = () => {
         if (arguments.length && typeof value === "number") {
           locoScroll.scrollTo(value, { duration: 0, disableLerp: true });
         } else {
-          // @ts-expect-error: Accessing private property for ScrollTrigger integration
-          return locoScroll.instance.scroll.y ?? 0;
+
+         // @ts-expect-error accessing scroll property from Locomotive instance
+          return locoScroll.scroll.instance.scroll.y;
         }
       },
+      getBoundingClientRect() {
+        return {
+          top: 0,
+          left: 0,
+          width: window.innerWidth,
+          height: window.innerHeight,
+        };
+      },
+  
       pinType: (mainRef.current as HTMLElement).style.transform ? "transform" : "fixed",
     });
-
   
     ScrollTrigger.addEventListener("refresh", ()=>{      locoScroll.update();});
 
@@ -195,7 +205,7 @@ const ScrollAnimation: React.FC = () => {
         <div id="page1">
           <div id="right-text">
             <h3>CYBERFICTION / KEY WORD</h3>
-            <h1>HAVE FUN<br />LET'S PLAY<br />JUST BE TOGETHER</h1>
+            <h1>HAVE FUN<br />LET&apos;S PLAY<br />JUST BE TOGETHER</h1>
           </div>
           <div id="left-text">
             <h1>MAKE A STORY<br />TAKE A CHANCE<br />BUILD AND OWNED</h1>
@@ -205,10 +215,10 @@ const ScrollAnimation: React.FC = () => {
         <div id="page2">
           <div id="text1">
             <h3>CYBERFICTION / HAVE FUN</h3>
-            <h1>LET'S<br />HAVE FUN<br />TOGETHER</h1>
+            <h1>LET&apos;S<br />HAVE FUN<br />TOGETHER</h1>
           </div>
           <div id="text2">
-            <p>LET'S HAVE A BLAST! LET'S JUST THROW AWAY AGE, GENDER, REGION, <br /> STATUS, ETC., DON'T COMPETE, DON'T FIGHT, COOPERATE AND SHARE <br /> WITH EACH OTHER AND ENJOY IT TOGETHER! SO THAT YOU CAN STAND <br /> THERE IN THE NOT-TOO-DISTANT FUTURE AND DREAM OF ANOTHER NEW <br /> FUTURE</p>
+            <p>LET&apos;S HAVE A BLAST! LET&apos;S JUST THROW AWAY AGE, GENDER, REGION, <br /> STATUS, ETC., DON&apos;T COMPETE, DON&apos;T FIGHT, COOPERATE AND SHARE <br /> WITH EACH OTHER AND ENJOY IT TOGETHER! SO THAT YOU CAN STAND <br /> THERE IN THE NOT-TOO-DISTANT FUTURE AND DREAM OF ANOTHER NEW <br /> FUTURE</p>
           </div>
         </div>
         <div id="page3">

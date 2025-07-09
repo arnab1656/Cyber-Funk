@@ -1,5 +1,10 @@
+"use client"
 
-import ScrollAnimation from '../components/ScrollAnimation';
+import dynamic from 'next/dynamic';
+
+const ScrollAnimation = dynamic(() => import('../components/ScrollAnimation'), {
+  ssr: false,
+})
 
 export default function Home() {
   return (
