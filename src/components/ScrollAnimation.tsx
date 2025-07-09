@@ -34,17 +34,12 @@ const ScrollAnimation: React.FC = () => {
 
     ScrollTrigger.scrollerProxy(mainRef.current, {
       scrollTop(value) {
-        return arguments.length
-          ? locoScroll.scrollTo(value, 0, 0)
-          : locoScroll.scroll.instance.scroll.y;
-      },
-      getBoundingClientRect() {
-        return {
-          top: 0,
-          left: 0,
-          width: window.innerWidth,
-          height: window.innerHeight,
-        };
+        if (arguments.length && typeof value === "number") {
+          locoScroll.scrollTo(value, { duration: 0, disableLerp: true });
+        } else {
+          // @ts-expect-error: Accessing private property for ScrollTrigger integration
+          return locoScroll.instance.scroll.y ?? 0;
+        }
       },
       pinType: (mainRef.current as HTMLElement).style.transform ? "transform" : "fixed",
     });
