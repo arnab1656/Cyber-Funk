@@ -1,9 +1,12 @@
 "use client"
 
+import { useState } from "react";
 import LocomotiveScroll from "locomotive-scroll";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
+import { FaGithub } from "react-icons/fa";
+import { CiPlay1, CiPause1 } from "react-icons/ci";
 import "./scrollAnimation.css"
 
 // Register GSAP plugin safely
@@ -22,6 +25,24 @@ const ScrollAnimation: React.FC = () => {
   const mainRef = useRef<HTMLDivElement>(null);
   const images = useRef<HTMLImageElement[]>([]);
   const imageSeq = useRef({ frame: 1 });
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  const handlePlayPause = () => {
+    if (!audioRef.current) return;
+    if (isPlaying) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+    setIsPlaying((prev) => !prev);
+  };
+
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.volume = 0.2;
+    }
+  }, []);
 
   //_This usEffect for the Scroll and pin mechanism...
   useEffect(() => {
@@ -180,8 +201,8 @@ const ScrollAnimation: React.FC = () => {
   return (
     <>
       <div id="nav">
-              <h3 className="text-[25px] font-normal">
-                <span className="text-black px-1">CYBER</span>
+              <h3>
+                <span className="text-black px-1"><b>CYBER</b></span>
                 <span
                   className="ml-1 text-transparent"
                   style={{ WebkitTextStroke: "1px black" }}
@@ -189,42 +210,90 @@ const ScrollAnimation: React.FC = () => {
                    FUNK
                 </span>
               </h3>
-              <button className="cursor-pointer">Github</button>
+              <div id ="nav-button" className="flex items-center">
+                <button id="but-play" className="flex items-center justify-center cursor-pointer rounded-md bg-black text-white" onClick={handlePlayPause}>
+                  {isPlaying ? <CiPause1 /> : <CiPlay1 />}
+                </button>
+                <audio ref={audioRef} src="/music/cyberfunk.mp3" loop />
+                <a
+                  href="https://github.com/arnab1656/Cyber-Funk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ textDecoration: "none" }}
+                >
+                  <button id="but-git-link" className="flex items-center justify-center cursor-pointer rounded-md bg-black text-white">
+                    <FaGithub />
+                    <span>Github</span>
+                  </button>
+                </a>
+              </div>
       </div>
             <div id="main" ref={mainRef}>
+
+
         <div id="page">
-          <div id="loop">
-            <h1>CYBER FICTION IS THE  REAL <span>STORY</span> IN THE <span><i>METAVERSE.</i></span></h1>
-            <h1><b>CYBER</b>FICTION IS THE <b><i>REAL</i></b> <span>STORY</span> IN THE <span><i>METAVERSE.</i></span></h1>
-            <h1><b>CYBER</b>FICTION IS THE <b><i>REAL</i></b> <span>STORY</span> IN THE <span><i>METAVERSE.</i></span></h1>
-          </div>
-          <h3>CYBERFICTION AIMS TO BE A DECENTRALIZED COMMUNITY THAT CAN <br /> CREATE NEW VALUES AND PROFITS THROUGH PLAY IN THE VIRTUAL <br /> WORLD.</h3>
+          
+        <div id="loop">
+                <h1><b>CYBER</b> FUNK IS THE <b><i>VIBE</i></b> <span>WE</span> BRING TO THE <span><i>NEW WORLD</i></span>.</h1> 
+                {" "}
+                <h1><b>CYBER</b> FUNK IS THE <b><i>VIBE</i></b> <span>WE</span> BRING TO THE <span><i>NEW WORLD</i></span>.</h1>
+
+                <h1><b>CYBER</b> FUNK IS THE <b><i>VIBE</i></b> <span>WE</span> BRING TO THE <span><i>NEW WORLD</i></span>.</h1>
+
+
+        </div>
+        <h3>CYBER FUNK EMPOWERS A GLOBAL COMMUNITY TO SHAPE, PLAY, <br />
+AND INNOVATE TOGETHER—CREATING REAL VALUE IN A VIRTUAL <br />
+REALITY WITHOUT LIMITS.</h3>
           <h4>...SCROLL TO READ</h4>
           <canvas ref={canvasRef}></canvas>
+
+
         </div>
         <div id="page1">
-          <div id="right-text">
-            <h3>CYBERFICTION / KEY WORD</h3>
-            <h1>HAVE FUN<br />LET&apos;S PLAY<br />JUST BE TOGETHER</h1>
+          <div id="lefty-text">
+          
+            <h3 >CYBER FUNK</h3>
+          
+            <h1 className="inline-block">ARNAB HERE</h1> 
+            <br />
+            <h1 className="inline-block">LET&apos;S PLAY</h1> 
+            <br />
+            <h1 className="inline-block">JUST BE TOGETHER</h1>
+          
           </div>
-          <div id="left-text">
-            <h1>MAKE A STORY<br />TAKE A CHANCE<br />BUILD AND OWNED</h1>
-            <h3>..AND MAINTAIN GOOD HUMANITY</h3>
+     
+
+          <div id="right-text">
+              <h1 className="inline-block">MAKE A STORY</h1>
+              <br />
+              <h1 className="inline-block">TAKE A CHANCE</h1>
+              <br />
+              <h1 className="inline-block">CHOICE AND OWNED</h1>
+              <h3>..AND MAINTAIN GOOD HUMANITY</h3>
           </div>
         </div>
         <div id="page2">
-          <div id="text1">
-            <h3>CYBERFICTION / HAVE FUN</h3>
-            <h1>LET&apos;S<br />HAVE FUN<br />TOGETHER</h1>
+          <div id="left">
+            <h3>CYBER FUNK</h3>
+            <h1 className="inline-block">LET&apos;S </h1>
+            <br />
+            <h1 className="inline-block">HAVE FUN </h1> 
+            <br /> 
+            <h1 className="inline-block">TOGETHER</h1>
           </div>
-          <div id="text2">
+          <div id="right">
             <p>LET&apos;S HAVE A BLAST! LET&apos;S JUST THROW AWAY AGE, GENDER, REGION, <br /> STATUS, ETC., DON&apos;T COMPETE, DON&apos;T FIGHT, COOPERATE AND SHARE <br /> WITH EACH OTHER AND ENJOY IT TOGETHER! SO THAT YOU CAN STAND <br /> THERE IN THE NOT-TOO-DISTANT FUTURE AND DREAM OF ANOTHER NEW <br /> FUTURE</p>
           </div>
         </div>
         <div id="page3">
-          <div id="text3">
-            <h3>CYBERFICTION / PLAYGROUND</h3>
-            <h1>CYBERFIELD<br />IS OUR<br />PLAYGROUND</h1>
+          <div id="right">
+            <h3>CYBER FUNK</h3>
+            <h1 className="inline-block">CYBER POWER</h1>
+            <br />
+            <h1  className="inline-block">IS OUR</h1>
+            <br />
+             <h1  className="inline-block">PLAYGROUND</h1>
           </div>
         </div>
       </div>
