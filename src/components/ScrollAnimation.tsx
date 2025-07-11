@@ -129,7 +129,7 @@ const ScrollAnimation: React.FC = () => {
     function getCanvasSize() {
       const width = window.innerWidth;
       if (width <= 600) {
-        return { width: window.innerWidth, height: window.innerHeight * 0.4 };
+        return { width: window.innerWidth * 1.2, height: window.innerHeight * 0.8};
       } else if (width <= 1024) {
         return { width: window.innerWidth, height: window.innerHeight * 0.7 };
       } else {
@@ -163,9 +163,16 @@ const ScrollAnimation: React.FC = () => {
       const canvas = ctx.canvas;
       const hRatio = canvas.width / img.width;
       const vRatio = canvas.height / img.height;
-      const ratio = Math.max(hRatio, vRatio);
+
+      // Use hRatio for mobile (<=600px), else use cover logic
+
+      const ratio = Math.max(hRatio, vRatio)
+
+      // const ratio = window.innerWidth <= 600 ? hRatio : Math.max(hRatio, vRatio);
+
       const centerShift_x = (canvas.width - img.width * ratio) / 2;
       const centerShift_y = (canvas.height - img.height * ratio) / 2;
+
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       ctx.drawImage(
         img,
