@@ -125,8 +125,25 @@ const ScrollAnimation: React.FC = () => {
     if (!canvas) return;
     const context = canvas.getContext("2d");
     if (!context) return;
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+
+    function getCanvasSize() {
+      const width = window.innerWidth;
+      if (width <= 600) {
+        return { width: window.innerWidth, height: window.innerHeight * 0.4 };
+      } else if (width <= 1024) {
+        return { width: window.innerWidth, height: window.innerHeight * 0.7 };
+      } else {
+        return { width: window.innerWidth, height: window.innerHeight };
+      }
+    }
+
+    function setCanvasSize(canvas: HTMLCanvasElement) {
+      const { width, height } = getCanvasSize();
+      canvas.width = width;
+      canvas.height = height;
+    }
+
+    setCanvasSize(canvas);
 
     images.current = [];
     for (let i = 0; i < frameCount; i++) {
@@ -135,7 +152,7 @@ const ScrollAnimation: React.FC = () => {
       images.current.push(img);
     }
 
-    function render() {
+    function render(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D) {
       if (context) {
         scaleImage(images.current[imageSeq.current.frame], context);
       }
@@ -163,7 +180,7 @@ const ScrollAnimation: React.FC = () => {
       );
     }
 
-    images.current[1].onload = render;
+    images.current[1].onload = () => render(canvas, context);
 
     gsap.to(imageSeq.current, {
       frame: frameCount - 1,
@@ -176,7 +193,7 @@ const ScrollAnimation: React.FC = () => {
         end: "600% top",
         scroller: mainRef.current,
       },
-      onUpdate: render,
+      onUpdate: () => render(canvas, context),
     });
 
     ScrollTrigger.create({
@@ -188,9 +205,12 @@ const ScrollAnimation: React.FC = () => {
     });
 
     const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      render();
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+      const context = canvas.getContext("2d");
+      if (!context) return;
+      setCanvasSize(canvas);
+      render(canvas, context);
     };
     window.addEventListener("resize", handleResize);
     return () => {
@@ -233,22 +253,20 @@ const ScrollAnimation: React.FC = () => {
 
         <div id="page">
           
-        <div id="loop">
+          <div id="loop">
                 <h1><b>CYBER</b> FUNK IS THE <b><i>VIBE</i></b> <span>WE</span> BRING TO THE <span><i>NEW WORLD</i></span>.</h1> 
                 {" "}
                 <h1><b>CYBER</b> FUNK IS THE <b><i>VIBE</i></b> <span>WE</span> BRING TO THE <span><i>NEW WORLD</i></span>.</h1>
 
                 <h1><b>CYBER</b> FUNK IS THE <b><i>VIBE</i></b> <span>WE</span> BRING TO THE <span><i>NEW WORLD</i></span>.</h1>
+          </div>
 
+          <h3>CYBER FUNK EMPOWERS A GLOBAL COMMUNITY TO SHAPE, PLAY, <br />
+              AND INNOVATE TOGETHER—CREATING REAL VALUE IN A VIRTUAL <br />
+              REALITY WITHOUT LIMITS.</h3>
+            <h4>...SCROLL TO READ</h4>
 
-        </div>
-        <h3>CYBER FUNK EMPOWERS A GLOBAL COMMUNITY TO SHAPE, PLAY, <br />
-AND INNOVATE TOGETHER—CREATING REAL VALUE IN A VIRTUAL <br />
-REALITY WITHOUT LIMITS.</h3>
-          <h4>...SCROLL TO READ</h4>
           <canvas ref={canvasRef}></canvas>
-
-
         </div>
         <div id="page1">
           <div id="lefty-text">
