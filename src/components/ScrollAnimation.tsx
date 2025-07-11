@@ -129,7 +129,7 @@ const ScrollAnimation: React.FC = () => {
     function getCanvasSize() {
       const width = window.innerWidth;
       if (width <= 600) {
-        return { width: window.innerWidth * 1.2, height: window.innerHeight * 0.8};
+        return { width: window.innerWidth * 1.1, height: window.innerHeight * 0.6};
       } else if (width <= 1024) {
         return { width: window.innerWidth, height: window.innerHeight * 0.7 };
       } else {

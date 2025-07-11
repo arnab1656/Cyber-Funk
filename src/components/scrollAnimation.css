@@ -180,6 +180,7 @@ canvas{
     font-weight: 500;
 }
 
+
 /* Responsive styles for #page and #loop */
 
 @media (max-width: 1024px) {
@@ -187,43 +188,51 @@ canvas{
       height: 80vh;
       width: 100vw;
     }
+  
     #loop {
-      font-size: 60px;
+      font-size: 3.75rem; 
       top: 18%;
       height: 18%;
     }
+  
     #page > h3 {
-      font-size: 18px;
+      font-size: 1.125rem; 
       top: 75%;
     }
+  
     #page > h4 {
-      font-size: 15px;
+      font-size: 0.9375rem;
       top: 88%;
-      left: 10%;
+      left: 0.625rem;
     }
   }
   
   @media (max-width: 600px) {
     #page {
-      height: 60vh;
+      height: 80vh;
       width: 100vw;
     }
+  
     #loop {
-      font-size: 28px;
-      top: 12%;
-      height: 12%;
+      font-size: 3rem; 
+      top: 50%;
+      height: 20%;
+      font-weight: 900;
     }
+  
     #page > h3 {
-      font-size: 12px;
+      font-size: 0.75rem;
       top: 80%;
-      left: 5%;
+      left: 0.3125rem; 
     }
+  
     #page > h4 {
-      font-size: 10px;
+      font-size: 0.625rem;
       top: 92%;
-      left: 5%;
+      left: 0.3125rem; 
     }
   }
+  
 
 /* Page 1 styling  */
 
