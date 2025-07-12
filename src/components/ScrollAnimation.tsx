@@ -274,29 +274,66 @@ const ScrollAnimation: React.FC = () => {
 
           <canvas ref={canvasRef}></canvas>
         </div>
+
         <div id="page1">
           <div id="lefty-text">
           
             <h3 >CYBER FUNK</h3>
           
-            <h1 className="inline-block">ARNAB HERE</h1> 
+            {/* Make it invisble in the 600 screen only" */}
+            <h1 id="inVisible" className="inline-block">ARNAB HERE</h1> 
+            
+            {/* Make it visible in the 600 screeen only */}
+
+            <h1 id="lefty-text-visible" className="inline-block">ARNAB</h1>
             <br />
-            <h1 className="inline-block">LET&apos;S PLAY</h1> 
+            <h1 id="lefty-text-visible" className="inline-block">HERE</h1>
+
+            {/* End of it blocking for clear scope */}
+
             <br />
-            <h1 className="inline-block">JUST BE TOGETHER</h1>
-          
+
+             {/* Make it invisble in the 600 screen only" */}
+
+            <h1 id="lefty-text-inVisible-1" className="inline-block">LET&apos;S PLAY</h1> 
+            <br />
+            <h1 id="lefty-text-inVisible-2" className="inline-block">JUST BE TOGETHER</h1>
+
+             {/* Make it invisble in the 600 screen only scpoe ends" */}
+           
           </div>
      
 
           <div id="right-text">
-              <h1 className="inline-block">MAKE A STORY</h1>
+
+              {/* Make it invisble in the 600 screen only" */}
+              <h1 id="inVisible" className="inline-block">MAKE A STORY</h1>
+
+
+              {/* Make it visible in the 600 screeen only */}
+              <h1 className="inline-block">MAKE</h1>
               <br />
-              <h1 className="inline-block">TAKE A CHANCE</h1>
+              <h1 className="inline-block"> A STORY</h1>
               <br />
-              <h1 className="inline-block">CHOICE AND OWNED</h1>
-              <h3>..AND MAINTAIN GOOD HUMANITY</h3>
+              {/* Make it visible in the 600 screeen only scope ends*/}
+
+              <h1 id="right-text-inVisible-1" className="inline-block">TAKE A CHANCE</h1>
+              <br />
+              <h1 id="right-text-inVisible-2" className="inline-block">CHOICE AND OWNED</h1>
+           
+           
+              <h3 id="inVisible">..AND MAINTAIN GOOD HUMANITY</h3>
+
+              <h3 >..AND MAINTAIN</h3>
+              <br />
+              <h3 > GOOD HUMANITY</h3>
+
+
           </div>
+
+
         </div>
+
         <div id="page2">
           <div id="left">
             <h3>CYBER FUNK</h3>

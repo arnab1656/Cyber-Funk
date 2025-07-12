@@ -278,6 +278,64 @@ canvas{
 
 }
 
+/* Responsive styles for #page1 */
+
+@media (max-width: 1024px) {
+  #page1 > #lefty-text > h1 {
+    font-size: 2rem;
+    padding: 3px 3px;
+  }
+  #page1 > #right-text > h1 {
+    font-size: 2rem;
+    padding: 3px 3px;
+  }
+  #page1 > #lefty-text > h3 {
+    font-size: 1rem;
+  }
+  #page1 > #right-text > h3 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+
+  #page1>#lefty-text{
+    position: absolute;
+    top: 35%;
+    left: 2%;
+}
+
+  #page1 > #lefty-text > h1 {
+    font-size: 1.9rem;
+    padding: 2px 2px;
+  }
+  #page1 > #right-text > h1 {
+    font-size: 1.9rem;
+    padding: 2px 2px;
+  }
+  #page1 > #lefty-text > h3 {
+    font-size: 0.8rem;
+  }
+  #page1 > #right-text > h3 {
+    font-size: 0.8rem;
+    text-align: end;
+    margin-bottom: -0.8125rem;
+    line-height: 1.2;
+  }  
+  
+  /* Hide specific elements on mobile */
+  #inVisible,
+  #lefty-text-inVisible-1,
+  #lefty-text-inVisible-2,
+  #right-text-inVisible-1,
+  #right-text-inVisible-2 {
+    display: none;
+  }
+}
+
+
+/* Page 1 styling ends */
+
 
 /* Page 2 styling  */
 
@@ -340,3 +398,5 @@ padding: 5px 5px;
 margin-bottom: 5px;
 letter-spacing: 2px;
 }
+
+
