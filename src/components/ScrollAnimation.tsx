@@ -269,7 +269,13 @@ const ScrollAnimation: React.FC = () => {
 
   return (
     <>
-      {showLoader && <Loader />}
+      {showLoader && (
+        <Loader 
+          imagesLoaded={imagesLoaded}
+          musicLoaded={musicLoaded}
+          onLoadingComplete={() => setShowLoader(false)}
+        />
+      )}
       <div id="nav">
               <h3>
                 <span className="text-black px-1"><b>CYBER</b></span>

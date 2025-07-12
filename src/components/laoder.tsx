@@ -2,7 +2,13 @@
 
 import { useState, useEffect } from 'react';
 
-const Loader: React.FC = () => {
+interface LoaderProps {
+  onLoadingComplete?: () => void;
+  imagesLoaded?: boolean;
+  musicLoaded?: boolean;
+}
+
+const Loader: React.FC<LoaderProps> = ({ onLoadingComplete, imagesLoaded = false, musicLoaded = false }) => {
   const [progress, setProgress] = useState(0);
   const [currentMessage, setCurrentMessage] = useState(0);
   const [glitchActive, setGlitchActive] = useState(false);
@@ -15,17 +21,54 @@ const Loader: React.FC = () => {
     "WELCOME TO THE FUTURE..."
   ];
 
-  // Simulate progress
+  // Calculate real loading progress
   useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress(prev => {
-        if (prev >= 100) return 100;
-        return prev + Math.random() * 15;
-      });
-    }, 200);
-
-    return () => clearInterval(interval);
-  }, []);
+    let imageProgress = 0;
+    let musicProgress = 0;
+    
+    // Simulate image loading progress (since we can't track individual images)
+    if (!imagesLoaded) {
+      const imageInterval = setInterval(() => {
+        imageProgress += Math.random() * 10;
+        if (imageProgress >= 100) {
+          imageProgress = 100;
+          clearInterval(imageInterval);
+        }
+        
+        // Calculate overall progress (images: 80%, music: 20%)
+        const overallProgress = (imageProgress * 0.8) + (musicProgress * 0.2);
+        setProgress(Math.min(overallProgress, 100));
+      }, 100);
+      
+      return () => clearInterval(imageInterval);
+    } else {
+      imageProgress = 100;
+    }
+    
+    // Simulate music loading progress
+    if (!musicLoaded) {
+      const musicInterval = setInterval(() => {
+        musicProgress += Math.random() * 15;
+        if (musicProgress >= 100) {
+          musicProgress = 100;
+          clearInterval(musicInterval);
+        }
+        
+        // Calculate overall progress (images: 80%, music: 20%)
+        const overallProgress = (imageProgress * 0.8) + (musicProgress * 0.2);
+        setProgress(Math.min(overallProgress, 100));
+      }, 150);
+      
+      return () => clearInterval(musicInterval);
+    } else {
+      musicProgress = 100;
+    }
+    
+    // Set final progress when both are loaded
+    if (imagesLoaded && musicLoaded) {
+      setProgress(100);
+    }
+  }, [imagesLoaded, musicLoaded]);
 
   // Cycle through messages
   useEffect(() => {
@@ -46,17 +89,26 @@ const Loader: React.FC = () => {
     return () => clearInterval(glitchInterval);
   }, []);
 
+  // Call onLoadingComplete when progress reaches 100%
+  useEffect(() => {
+    if (progress >= 100 && onLoadingComplete) {
+      setTimeout(() => {
+        onLoadingComplete();
+      }, 500);
+    }
+  }, [progress, onLoadingComplete]);
+
   return (
     <div className="cyberpunk-loader">
       {/* Background Circuit Board */}
       <div className="circuit-board">
         <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
           <defs>
-                          <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stopColor="#000000" />
-                <stop offset="50%" stopColor="#7c7c7c" />
-                <stop offset="100%" stopColor="#000000" />
-              </linearGradient>
+            <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#000000" />
+              <stop offset="50%" stopColor="#7c7c7c" />
+              <stop offset="100%" stopColor="#000000" />
+            </linearGradient>
             <filter id="glow">
               <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
               <feMerge> 
