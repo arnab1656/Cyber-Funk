@@ -190,20 +190,21 @@ canvas{
     }
   
     #loop {
-      font-size: 3.75rem; 
-      top: 18%;
-      height: 18%;
+      font-size: 6.75rem; 
+      top: 40%;
+      height: 23%;
     }
   
     #page > h3 {
-      font-size: 1.125rem; 
+      font-size: 1.1rem; 
       top: 75%;
+      left :2%
     }
   
     #page > h4 {
       font-size: 0.9375rem;
-      top: 88%;
-      left: 0.625rem;
+      top: 83%;
+      left: 8rem;
     }
   }
   

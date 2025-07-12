@@ -370,7 +370,7 @@ const ScrollAnimation: React.FC = () => {
              <h1  className="inline-block">PLAYGROUND</h1>
              <br />
              <h3 id="invisible">GROUND IS YOURS</h3>
-             
+
           </div>
 
           <div id="left">
