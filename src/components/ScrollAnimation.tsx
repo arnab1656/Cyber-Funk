@@ -356,14 +356,29 @@ const ScrollAnimation: React.FC = () => {
         
         </div>
         <div id="page3">
+
+
           <div id="right">
+
+            <h3 id="mobile-invisible">CYBER FUNK</h3>
+            <h1 id="mobile-invisible" className="inline-block">CYBER POWER</h1>
+            <br id="mobile-invisible" />
+
+             <h1  className="inline-block">IS OUR</h1>
+             <br />
+
+             <h1  className="inline-block">PLAYGROUND</h1>
+             <br />
+             <h3 id="invisible">GROUND IS YOURS</h3>
+             
+          </div>
+
+          <div id="left">
             <h3>CYBER FUNK</h3>
             <h1 className="inline-block">CYBER POWER</h1>
-            <br />
-            <h1  className="inline-block">IS OUR</h1>
-            <br />
-             <h1  className="inline-block">PLAYGROUND</h1>
           </div>
+
+
         </div>
       </div>
     </>

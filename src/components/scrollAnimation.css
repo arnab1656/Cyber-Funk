@@ -338,6 +338,10 @@ canvas{
 
 /* Page 2 styling  */
 
+#page2 > #right-mobile {
+  display: none;
+}
+
 #page2>#left{
     position: absolute;
     top: 30%;
@@ -412,6 +416,11 @@ canvas{
   }
   
   /* New right container for mobile */
+
+  #page2 > #right-mobile {
+    display: block; 
+  }
+  
   #page2 > #right-mobile {
     position: absolute;
     top: 60%;
@@ -430,6 +439,9 @@ canvas{
 
 /* Page 3 styling  */
 
+#page3>#left{
+  display: none;
+}
 
 #page3>#right{
     position: absolute;
@@ -437,14 +449,18 @@ canvas{
     right: 10%;
     text-align: end;
 }
+
+#page3>#right>#invisible{
+  display: none;
+}
+
 #page3>#right>h3{
     color: #7c7c7c;
     font-weight: 400;
     margin-bottom: 5px;
 }
 #page3>#right>h1{
- 
-    background: #000;
+background: #000;
 color: #ffffff;
 line-height: 1.5;
 font-size: 3rem;
@@ -452,6 +468,84 @@ font-weight: 500;
 padding: 5px 5px; 
 margin-bottom: 5px;
 letter-spacing: 2px;
+}
+
+
+/* Responsive styles for #page3 */
+
+@media (max-width: 1024px) {
+  #page3 > #right > h1 {
+    font-size: 2rem;
+    padding: 3px 3px;
+  }
+  #page3 > #right > h3 {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+
+  #page3>#left{
+   display: block;
+  }
+  
+
+  #page3>#left{
+    position: absolute;
+    top: 40%;
+    left: 2%;
+    text-align: start;
+  }
+  
+  #page3>#left>h3{
+    color: #7c7c7c;
+    font-weight: 400;
+    margin-bottom: 5px;
+  }
+  #page3>#left>h1{
+  background: #000;
+  color: #ffffff;
+  line-height: 1.5;
+  font-size: 3rem;
+  font-weight: 500;
+  padding: 5px 5px; 
+  margin-bottom: 5px;
+  letter-spacing: 2px;
+  }
+  
+
+  #page3 > #left > h1 {
+    font-size: 1.5rem;
+    padding: 2px 2px;
+  }
+  #page3 > #left > h3 {
+    font-size: 0.8rem;
+  }
+
+  #page3>#right>#invisible{
+    display: block;
+  }
+
+
+  #page3>#right>#mobile-invisible
+  {
+    display: none;
+  }
+
+  #page3>#right{
+    position: absolute;
+    top: 46%;
+    right: 2%;
+    text-align:end;
+  }
+
+  #page3 > #right > h1 {
+    font-size: 1.5rem;
+    padding: 2px 2px;
+  }
+  #page3 > #right > h3 {
+    font-size: 0.8rem;
+  }
 }
 
 
