@@ -335,6 +335,7 @@ const ScrollAnimation: React.FC = () => {
         </div>
 
         <div id="page2">
+
           <div id="left">
             <h3>CYBER FUNK</h3>
             <h1 className="inline-block">LET&apos;S </h1>
@@ -343,9 +344,16 @@ const ScrollAnimation: React.FC = () => {
             <br /> 
             <h1 className="inline-block">TOGETHER</h1>
           </div>
+
           <div id="right">
             <p>LET&apos;S HAVE A BLAST! LET&apos;S JUST THROW AWAY AGE, GENDER, REGION, <br /> STATUS, ETC., DON&apos;T COMPETE, DON&apos;T FIGHT, COOPERATE AND SHARE <br /> WITH EACH OTHER AND ENJOY IT TOGETHER! SO THAT YOU CAN STAND <br /> THERE IN THE NOT-TOO-DISTANT FUTURE AND DREAM OF ANOTHER NEW <br /> FUTURE</p>
           </div>
+
+          <div id="right-mobile">
+            <p>HERE CYBER MEETS FUNK.<br />EXPERIENCE THE FUTURE.<br />ULTRA OF POSSIBILITY.
+            </p>
+          </div>
+        
         </div>
         <div id="page3">
           <div id="right">

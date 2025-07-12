@@ -333,7 +333,6 @@ canvas{
   }
 }
 
-
 /* Page 1 styling ends */
 
 
@@ -373,6 +372,62 @@ canvas{
 }
 
 
+/* Responsive styles for #page2 */
+
+@media (max-width: 1024px) {
+
+  #page2>#left{
+    position: absolute;
+    top: 35%;
+    left: 2%;
+}
+
+  #page2 > #left > h1 {
+    font-size: 2rem;
+    padding: 3px 3px;
+  }
+  #page2 > #left > h3 {
+    font-size: 1rem;
+  }
+  #page2 > #right > p {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 600px) {
+  #page2 > #left > h1 {
+    font-size: 1.5rem;
+    padding: 2px 2px;
+  }
+  #page2 > #left > h3 {
+    font-size: 0.8rem;
+  }
+  #page2 > #right > p {
+    font-size: 0.7rem;
+  }
+  
+  /* Hide the original right div on mobile */
+  #page2 > #right {
+    display: none;
+  }
+  
+  /* New right container for mobile */
+  #page2 > #right-mobile {
+    position: absolute;
+    top: 60%;
+    right: 2%;
+    text-align: end;
+  }
+  
+  #page2 > #right-mobile > p {
+    color: #7c7c7c;
+    font-weight: 400;
+    font-size: 0.7rem;
+    line-height: 1.4;
+  }
+}
+
+
 /* Page 3 styling  */
 
 
@@ -398,5 +453,6 @@ padding: 5px 5px;
 margin-bottom: 5px;
 letter-spacing: 2px;
 }
+
 
 
