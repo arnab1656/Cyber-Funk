@@ -236,6 +236,10 @@ canvas{
   
 /* Page 1 styling  */
 
+#page1>#right-text>#right-text-sm-vis{
+display: none;
+}
+
 #page1>#lefty-text{
     position: absolute;
     top: 30%;
@@ -282,6 +286,29 @@ canvas{
 /* Responsive styles for #page1 */
 
 @media (max-width: 1024px) {
+
+  /* clearing  the lefty-text-visible section tag in this mid-screen */
+
+  #page1>#lefty-text>#lefty-text-visible{
+    display:none
+  }
+  #page1>#right-text>#mid-invisible{
+    display:none
+  }
+
+  #page1>#lefty-text{
+    position: absolute;
+    top: 35%;
+    left: 2%;
+   }
+
+   #page1>#right-text{
+    position: absolute;
+    top: 48%;
+    right: 2%;
+    text-align:end;
+   }
+
   #page1 > #lefty-text > h1 {
     font-size: 2rem;
     padding: 3px 3px;
@@ -290,15 +317,34 @@ canvas{
     font-size: 2rem;
     padding: 3px 3px;
   }
-  #page1 > #lefty-text > h3 {
-    font-size: 1rem;
+  #page1 > #lefty-text > h3 > #inVisible {
+    padding-bottom: 0.625rem;
+    font-size: 1.2rem;
   }
-  #page1 > #right-text > h3 {
-    font-size: 1rem;
+  #page1 > #right-text > h3 > #inVisible {
+    font-size: 1.2rem;
+    padding-top:  0.625rem;
   }
+ 
 }
 
 @media (max-width: 600px) {
+
+
+  /* first make the lefty-text-visible section visible then apply the css prop */
+
+  #page1>#lefty-text>#lefty-text-visible{
+    display:inline-block
+  }
+
+  #page1>#right-text>#mid-invisible{
+    display:inline-block
+  }
+
+  #page1>#right-text>#right-text-sm-vis{
+    display: inline-block;
+  }
+
 
   #page1>#lefty-text{
     position: absolute;

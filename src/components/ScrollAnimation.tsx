@@ -283,13 +283,13 @@ const ScrollAnimation: React.FC = () => {
             {/* Make it invisble in the 600 screen only" */}
             <h1 id="inVisible" className="inline-block">ARNAB HERE</h1> 
             
-            {/* Make it visible in the 600 screeen only */}
+            {/* Make it visible in the <=600 screeen only */}
 
             <h1 id="lefty-text-visible" className="inline-block">ARNAB</h1>
-            <br />
+            <br id="lefty-text-visible"/>
             <h1 id="lefty-text-visible" className="inline-block">HERE</h1>
 
-            {/* End of it blocking for clear scope */}
+            {/* End of it blocking for clear scoping */}
 
             <br />
 
@@ -311,22 +311,24 @@ const ScrollAnimation: React.FC = () => {
 
 
               {/* Make it visible in the 600 screeen only */}
-              <h1 className="inline-block">MAKE</h1>
-              <br />
-              <h1 className="inline-block"> A STORY</h1>
-              <br />
+              <h1 id="right-text-sm-vis" className="inline-block">MAKE</h1>
+              <br id="right-text-sm-vis" />
+              <h1 id="right-text-sm-vis" className="inline-block"> A STORY</h1>
+              <br  />
               {/* Make it visible in the 600 screeen only scope ends*/}
 
+
+
               <h1 id="right-text-inVisible-1" className="inline-block">TAKE A CHANCE</h1>
-              <br />
+              <br id="right-text-inVisible-1" />
               <h1 id="right-text-inVisible-2" className="inline-block">CHOICE AND OWNED</h1>
            
            
               <h3 id="inVisible">..AND MAINTAIN GOOD HUMANITY</h3>
 
-              <h3 >..AND MAINTAIN</h3>
-              <br />
-              <h3 > GOOD HUMANITY</h3>
+              <h3 id="mid-invisible">..AND MAINTAIN</h3>
+              <br id="mid-invisible"/>
+              <h3 id="mid-invisible"> GOOD HUMANITY</h3>
 
 
           </div>
