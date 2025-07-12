@@ -7,6 +7,7 @@ import gsap from "gsap";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import { FaGithub } from "react-icons/fa";
 import { CiPlay1, CiPause1 } from "react-icons/ci";
+import Loader from "./laoder";
 import "./scrollAnimation.css"
 
 // Register GSAP plugin safely
@@ -20,12 +21,16 @@ function getImagePath(index: number): string {
   return `/frame_Image/male${String(index + 1).padStart(4, "0")}.png`;
 }
 
+
 const ScrollAnimation: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const mainRef = useRef<HTMLDivElement>(null);
   const images = useRef<HTMLImageElement[]>([]);
   const imageSeq = useRef({ frame: 1 });
   const [isPlaying, setIsPlaying] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
+  const [musicLoaded, setMusicLoaded] = useState(false);
+  const [showLoader, setShowLoader] = useState(true);
   const audioRef = useRef<HTMLAudioElement>(null);
 
   const handlePlayPause = () => {
@@ -38,9 +43,31 @@ const ScrollAnimation: React.FC = () => {
     setIsPlaying((prev) => !prev);
   };
 
+  // Check if all resources are loaded
+  useEffect(() => {
+    if (imagesLoaded && musicLoaded) {
+      setTimeout(() => {
+        setShowLoader(false);
+      }, 500);
+    }
+  }, [imagesLoaded, musicLoaded]);
+
   useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = 0.2;
+      
+      // Track music loading
+      const handleCanPlayThrough = () => {
+        setMusicLoaded(true);
+      };
+      
+      audioRef.current.addEventListener('canplaythrough', handleCanPlayThrough);
+      
+      return () => {
+        if (audioRef.current) {
+          audioRef.current.removeEventListener('canplaythrough', handleCanPlayThrough);
+        }
+      };
     }
   }, []);
 
@@ -146,11 +173,26 @@ const ScrollAnimation: React.FC = () => {
     setCanvasSize(canvas);
 
     images.current = [];
+    let loadedImages = 0;
+    
     for (let i = 0; i < frameCount; i++) {
       const img = new window.Image();
+      img.onload = () => {
+        loadedImages++;
+        if (loadedImages === frameCount) {
+          setImagesLoaded(true);
+        }
+      };
       img.src = getImagePath(i);
       images.current.push(img);
     }
+
+    // Fallback timeout to prevent infinite loading
+    setTimeout(() => {
+      if (!imagesLoaded) {
+        setImagesLoaded(true);
+      }
+    }, 10000); // 10 second timeout
 
     function render(canvas: HTMLCanvasElement, context: CanvasRenderingContext2D) {
       if (context) {
@@ -227,6 +269,7 @@ const ScrollAnimation: React.FC = () => {
 
   return (
     <>
+      {showLoader && <Loader />}
       <div id="nav">
               <h3>
                 <span className="text-black px-1"><b>CYBER</b></span>
@@ -388,3 +431,8 @@ const ScrollAnimation: React.FC = () => {
 };
 
 export default ScrollAnimation; 
+
+
+
+
+// see on every reload the  loader is runnign taht not what we want we want to mkae sure the laoder is only laoding for the fiist time the user land on the site . o first load tyhe images must be there in the local stroage on next time the user reload the images will be loaded form the loacal stroage okat this is the arc we are plananinn for ?
