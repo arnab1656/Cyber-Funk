@@ -255,8 +255,7 @@ const ScrollAnimation: React.FC = () => {
                 </a>
               </div>
       </div>
-            <div id="main" ref={mainRef}>
-
+        <div id="main" ref={mainRef}>
 
         <div id="page">
           

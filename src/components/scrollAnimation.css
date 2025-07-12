@@ -221,21 +221,19 @@ canvas{
     }
   
     #page > h3 {
-      font-size: 0.75rem;
+      font-size: 0.65rem;
       top: 80%;
-      left: 0.3125rem; 
+      left: 0.5rem; 
     }
   
     #page > h4 {
-      font-size: 0.625rem;
-      top: 92%;
-      left: 0.3125rem; 
+      font-size: .5rem;
+      top: 90%;
+      left: .40rem;
     }
   }
   
-
 /* Page 1 styling  */
-
 
 #page1>#lefty-text{
     position: absolute;
