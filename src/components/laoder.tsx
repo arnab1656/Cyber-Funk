@@ -55,7 +55,7 @@ const Loader: React.FC<LoaderProps> = ({ onLoadingComplete, imagesLoaded = false
         }
         
         // Calculate overall progress (images: 80%, music: 20%)
-        const overallProgress = (imageProgress * 0.8) + (musicProgress * 0.2);
+        const overallProgress = (imageProgress * 0.80) + (musicProgress * 0.2);
         setProgress(Math.min(overallProgress, 100));
       }, 150);
       

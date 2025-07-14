@@ -425,21 +425,32 @@ display: none;
 /* Responsive styles for #page2 */
 
 @media (max-width: 1024px) {
-
+  #page2 > #right {
+    display: none;
+  }
+  #page2 > #right-mobile {
+    display: block;
+    position: absolute;
+    top: 60%;
+    right: 2%;
+    text-align: end;
+  }
+  #page2 > #right-mobile > p {
+    color: #7c7c7c;
+    font-size: 1.5rem;
+    line-height: 1.4;
+  }
   #page2>#left{
     position: absolute;
-    top: 35%;
+    top: 32%;
     left: 2%;
-}
-
+    width: 60%;
+  }
   #page2 > #left > h1 {
     font-size: 2rem;
     padding: 3px 3px;
   }
   #page2 > #left > h3 {
-    font-size: 1rem;
-  }
-  #page2 > #right > p {
     font-size: 1rem;
   }
 }
@@ -520,12 +531,23 @@ letter-spacing: 2px;
 /* Responsive styles for #page3 */
 
 @media (max-width: 1024px) {
+  #page3 > #right {
+    display: block;
+    position: absolute;
+    top: 45%;
+    right: 2%;
+    width: 60%;
+    text-align: end;
+  }
   #page3 > #right > h1 {
     font-size: 2rem;
     padding: 3px 3px;
   }
   #page3 > #right > h3 {
     font-size: 1rem;
+  }
+  #page3 > #left {
+    display: none;
   }
 }
 
