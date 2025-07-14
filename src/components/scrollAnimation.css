@@ -180,6 +180,9 @@ canvas{
     font-weight: 500;
 }
 
+#page1 > #right-text >#mid-invisible{
+  display: none;
+}
 
 /* Responsive styles for #page and #loop */
 
@@ -238,6 +241,9 @@ canvas{
 
 #page1>#right-text>#right-text-sm-vis{
 display: none;
+}
+#page1 > #lefty-text> #lefty-text-visible{
+  display: none;
 }
 
 #page1>#lefty-text{
